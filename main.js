@@ -105,33 +105,30 @@ function requestAdminAndRestart() {
   }
 }
 
-// Check admin on startup (production only)
-if (!isDev && !isAdmin()) {
-  app.on('ready', () => {
-    const result = dialog.showMessageBoxSync({
+// App ready handler
+app.on('ready', async () => {
+  // Check admin on startup (production only)
+  if (!isDev && !isAdmin()) {
+    const result = await dialog.showMessageBox({
       type: 'warning',
       buttons: ['Запустить от администратора', 'Продолжить без прав'],
       defaultId: 0,
+      cancelId: 1,
       title: 'PuffVPN',
       message: 'Для TUN режима требуются права администратора',
       detail: 'Хотите перезапустить приложение с правами администратора?'
     });
     
-    if (result === 0) {
+    if (result.response === 0) {
       requestAdminAndRestart();
-    } else {
-      createWindow();
-      createTray();
-      if (autoUpdater) autoUpdater.checkForUpdatesAndNotify();
+      return;
     }
-  });
-} else {
-  app.on('ready', () => {
-    createWindow();
-    createTray();
-    if (autoUpdater) autoUpdater.checkForUpdatesAndNotify();
-  });
-}
+  }
+  
+  createWindow();
+  createTray();
+  if (autoUpdater) autoUpdater.checkForUpdatesAndNotify();
+});
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -140,6 +137,7 @@ function createWindow() {
     resizable: false,
     frame: false,
     transparent: true,
+    icon: path.join(__dirname, 'build', 'icon.ico'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
