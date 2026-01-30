@@ -1,6 +1,6 @@
 {
   "name": "puffvpn",
-  "version": "0.10.4",
+  "version": "0.10.5",
   "description": "VLESS VPN Client",
   "author": "ssqwas",
   "repository": {
@@ -76,8 +76,7 @@
     "publish": {
       "provider": "github",
       "owner": "ssqwas",
-      "repo": "puffvpn",
-      "private": true
+      "repo": "puffvpn"
     }
   },
   "dependencies": {
