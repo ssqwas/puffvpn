@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+build/
+dist/
+dist2/
+dist3/
+dist4/
+dist5/
+dist_old/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+.env.production
+
+# VPN binaries (user must download separately)
+xray/*.exe
+xray/*.dll
+xray/*.dat
+
+# Temp files
+*.tmp
