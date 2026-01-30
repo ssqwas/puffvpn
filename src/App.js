@@ -224,7 +224,7 @@ function App() {
               onKeyDown={(e) => e.key === 'Enter' && handleSaveKey()}
             />
             <button className="bot-btn" onClick={openBot}>
-              <img src="/Artboard.svg" alt="" className="btn-icon" />
+              <img src="./Artboard.svg" alt="" className="btn-icon" />
               Перейти в бота
             </button>
           </div>
@@ -262,7 +262,7 @@ function App() {
               </div>
 
               <div className="connect-row">
-                <img src="/netherlands.svg" alt="NL" className="country-flag-img" />
+                <img src="./netherlands.svg" alt="NL" className="country-flag-img" />
                 <button 
                   className={`connect-btn ${connecting ? 'loading' : ''}`}
                   onClick={connected ? handleDisconnect : handleConnect}
@@ -281,28 +281,28 @@ function App() {
                 </div>
                 <div className="sub-text">your subscription</div>
                 <button className="bot-btn" onClick={openBot}>
-                  <img src="/Artboard.svg" alt="" className="btn-icon" />
+                  <img src="./Artboard.svg" alt="" className="btn-icon" />
                   Перейти в бота
                 </button>
               </div>
 
               <div className="panel menu-panel">
                 <button className="menu-item" onClick={() => { console.log('Settings clicked'); setShowSettings(true); }}>
-                  <img src="/Settings.svg" alt="" className="menu-icon-img" />
+                  <img src="./Settings.svg" alt="" className="menu-icon-img" />
                   <span>Настройки</span>
                   <span className="arrow">›</span>
                 </button>
                 <div className="menu-divider"></div>
                 <button className="menu-item" onClick={() => window.open('https://t.me/puffvpn_support', '_blank')}>
                   <div className="menu-icon support">
-                    <img src="/Support.svg" alt="" className="menu-icon-inner" />
+                    <img src="./Support.svg" alt="" className="menu-icon-inner" />
                   </div>
                   <span>Поддержка</span>
                   <span className="arrow">›</span>
                 </button>
                 <div className="menu-divider"></div>
                 <button className="menu-item">
-                  <img src="/Lang.svg" alt="" className="menu-icon-img" />
+                  <img src="./Lang.svg" alt="" className="menu-icon-img" />
                   <span>Язык</span>
                   <span className="arrow">›</span>
                 </button>
@@ -338,7 +338,7 @@ function App() {
         </div>
       )}
 
-      <div className="version">puffvpn.0.10.05</div>
+      <div className="version">puffvpn.0.10.06</div>
     </div>
   );
 }
