@@ -15,16 +15,15 @@ body {
   background: #f1f1f1;
   border-radius: 10px;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
   overflow: hidden;
 }
 
 /* Logo */
 .logo {
-  margin-bottom: 30px;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .star {
@@ -33,13 +32,6 @@ body {
   filter: drop-shadow(0 4px 20px rgba(255, 0, 153, 0.3));
 }
 
-/* Welcome Screen */
-.welcome-screen {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .welcome-card {
   width: 358px;
@@ -108,15 +100,17 @@ body {
 
 /* Main Screen */
 .main-screen {
-  flex: 1;
-  width: 100%;
+  position: absolute;
+  top: 208px;
+  left: 30px;
+  right: 30px;
 }
 
 .main-grid {
   display: grid;
   grid-template-columns: 358px 358px;
   gap: 24px;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 /* Panels */
@@ -233,6 +227,19 @@ body {
   justify-content: center;
 }
 
+.country-flag-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.btn-icon {
+  width: 16px;
+  height: 14px;
+  object-fit: contain;
+}
+
 .connect-btn {
   flex: 1;
   height: 46px;
@@ -269,6 +276,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 22px;
+}
+
+/* Welcome Screen - centered */
+.welcome-screen {
+  position: absolute;
+  top: 208px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Subscription Panel */
@@ -361,6 +376,19 @@ body {
 
 .menu-icon.lang {
   background: #f1f1f1;
+}
+
+.menu-icon-img {
+  width: 27px;
+  height: 27px;
+  border-radius: 7px;
+  object-fit: contain;
+}
+
+.menu-icon-inner {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .menu-item span {

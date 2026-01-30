@@ -205,11 +205,8 @@ function App() {
   return (
     <div className="app">
       <div className="logo">
-        <svg viewBox="0 0 100 100" className="star">
-          <path 
-            d="M50 0 L58 42 L100 50 L58 58 L50 100 L42 58 L0 50 L42 42 Z" 
-            fill="#FF0099"
-          />
+        <svg width="115" height="115" viewBox="0 0 115 115" fill="none" xmlns="http://www.w3.org/2000/svg" className="star">
+          <path d="M70.9022 1.31173C72.2467 -1.00749 75.7938 -0.0537159 75.7938 2.62704V49.3285L113.008 70.902C115.327 72.2465 114.373 75.7936 111.693 75.7936H64.9913L43.4176 113.008C42.0731 115.328 38.526 114.374 38.526 111.693V64.9915L1.31173 43.418C-1.00749 42.0735 -0.0537159 38.5264 2.62704 38.5264H49.3285L70.9022 1.31173Z" fill="#FF46A2"/>
         </svg>
       </div>
 
@@ -227,9 +224,7 @@ function App() {
               onKeyDown={(e) => e.key === 'Enter' && handleSaveKey()}
             />
             <button className="bot-btn" onClick={openBot}>
-              <svg width="16" height="14" viewBox="0 0 24 24" fill="white">
-                <path d="M12 2L2 8l10 6 10-6-10-6zM2 16l10 6 10-6M2 12l10 6 10-6"/>
-              </svg>
+              <img src="/Artboard.svg" alt="" className="btn-icon" />
               Перейти в бота
             </button>
           </div>
@@ -267,7 +262,7 @@ function App() {
               </div>
 
               <div className="connect-row">
-                <div className="country-flag">🇳🇱</div>
+                <img src="/netherlands.svg" alt="NL" className="country-flag-img" />
                 <button 
                   className={`connect-btn ${connecting ? 'loading' : ''}`}
                   onClick={connected ? handleDisconnect : handleConnect}
@@ -286,28 +281,28 @@ function App() {
                 </div>
                 <div className="sub-text">your subscription</div>
                 <button className="bot-btn" onClick={openBot}>
-                  <svg width="16" height="14" viewBox="0 0 24 24" fill="white">
-                    <path d="M12 2L2 8l10 6 10-6-10-6zM2 16l10 6 10-6M2 12l10 6 10-6"/>
-                  </svg>
+                  <img src="/Artboard.svg" alt="" className="btn-icon" />
                   Перейти в бота
                 </button>
               </div>
 
               <div className="panel menu-panel">
                 <button className="menu-item" onClick={() => { console.log('Settings clicked'); setShowSettings(true); }}>
-                  <div className="menu-icon settings">⚙</div>
+                  <img src="/Settings.svg" alt="" className="menu-icon-img" />
                   <span>Настройки</span>
                   <span className="arrow">›</span>
                 </button>
                 <div className="menu-divider"></div>
                 <button className="menu-item" onClick={() => window.open('https://t.me/puffvpn_support', '_blank')}>
-                  <div className="menu-icon support">💬</div>
+                  <div className="menu-icon support">
+                    <img src="/Support.svg" alt="" className="menu-icon-inner" />
+                  </div>
                   <span>Поддержка</span>
                   <span className="arrow">›</span>
                 </button>
                 <div className="menu-divider"></div>
                 <button className="menu-item">
-                  <div className="menu-icon lang">🌐</div>
+                  <img src="/Lang.svg" alt="" className="menu-icon-img" />
                   <span>Язык</span>
                   <span className="arrow">›</span>
                 </button>
@@ -343,7 +338,7 @@ function App() {
         </div>
       )}
 
-      <div className="version">puffvpn.0.10.03</div>
+      <div className="version">puffvpn.0.10.04</div>
     </div>
   );
 }

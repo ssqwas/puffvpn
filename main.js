@@ -573,10 +573,7 @@ ipcMain.handle('get-status', () => {
 ipcMain.on('minimize', () => mainWindow.minimize());
 ipcMain.on('close', () => mainWindow.hide());
 
-app.whenReady().then(() => {
-  createWindow();
-  createTray();
-});
+// Note: Window creation is handled in app.on('ready') above
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

@@ -1,6 +1,6 @@
 {
   "name": "puffvpn",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "VLESS VPN Client",
   "author": "ssqwas",
   "repository": {
@@ -23,7 +23,7 @@
     "appId": "com.puffvpn.app",
     "productName": "PuffVPN",
     "directories": {
-      "output": "dist"
+      "output": "dist6"
     },
     "extends": null,
     "files": [
