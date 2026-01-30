@@ -14,23 +14,67 @@ const isDev = !app.isPackaged;
 let autoUpdater = null;
 if (!isDev) {
   autoUpdater = require('electron-updater').autoUpdater;
-  autoUpdater.autoDownload = true;
+  autoUpdater.autoDownload = false; // Don't auto-download, ask user first
   autoUpdater.autoInstallOnAppQuit = true;
   
-  autoUpdater.on('update-available', () => {
+  autoUpdater.on('update-available', (info) => {
     if (mainWindow) {
-      mainWindow.webContents.send('vpn-log', { type: 'info', message: 'Доступно обновление, загружается...' });
+      mainWindow.webContents.send('vpn-log', { type: 'info', message: `Доступно обновление v${info.version}` });
+    }
+    
+    // Show dialog to user
+    dialog.showMessageBox(mainWindow, {
+      type: 'info',
+      title: 'Обновление доступно',
+      message: `Доступна новая версия PuffVPN (v${info.version})`,
+      detail: 'Хотите обновить сейчас?',
+      buttons: ['Обновить', 'Позже'],
+      defaultId: 0,
+      cancelId: 1
+    }).then((result) => {
+      if (result.response === 0) {
+        // User clicked "Update"
+        if (mainWindow) {
+          mainWindow.webContents.send('vpn-log', { type: 'info', message: 'Загрузка обновления...' });
+        }
+        autoUpdater.downloadUpdate();
+      }
+    });
+  });
+  
+  autoUpdater.on('download-progress', (progress) => {
+    if (mainWindow) {
+      const percent = Math.round(progress.percent);
+      mainWindow.webContents.send('vpn-log', { type: 'info', message: `Загрузка: ${percent}%` });
     }
   });
   
   autoUpdater.on('update-downloaded', () => {
     if (mainWindow) {
-      mainWindow.webContents.send('vpn-log', { type: 'success', message: 'Обновление загружено. Перезапустите приложение для установки.' });
+      mainWindow.webContents.send('vpn-log', { type: 'success', message: 'Обновление загружено!' });
     }
+    
+    // Show dialog to restart
+    dialog.showMessageBox(mainWindow, {
+      type: 'info',
+      title: 'Обновление готово',
+      message: 'Обновление загружено и готово к установке',
+      detail: 'Приложение будет перезапущено для завершения обновления.',
+      buttons: ['Перезапустить', 'Позже'],
+      defaultId: 0,
+      cancelId: 1
+    }).then((result) => {
+      if (result.response === 0) {
+        autoUpdater.quitAndInstall();
+      }
+    });
   });
   
   autoUpdater.on('error', (err) => {
     console.error('Auto-updater error:', err);
+    if (mainWindow) {
+      mainWindow.webContents.send('vpn-log', { type: 'error', message: 'Ошибка обновления: ' + err.message });
+    }
   });
 }
 

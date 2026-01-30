@@ -338,7 +338,7 @@ function App() {
         </div>
       )}
 
-      <div className="version">puffvpn.0.10.06</div>
+      <div className="version">puffvpn.0.10.07</div>
     </div>
   );
 }
